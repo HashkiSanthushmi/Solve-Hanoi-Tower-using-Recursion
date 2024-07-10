@@ -1,0 +1,23 @@
+package solveHanoiTowerRecursively;
+
+import java.util.Scanner;
+
+public class SolveHanoiTowerRecursively {
+
+    static void solveHanoi(int disks, char sourceRod, char targetRod, char auxiliaryRod) {
+        if (disks == 0) {
+            return;
+        }
+        solveHanoi(disks - 1, sourceRod, auxiliaryRod, targetRod);
+        System.out.println("Move disk " + disks + " from rod " + sourceRod + " to rod " + targetRod);
+        solveHanoi(disks - 1, auxiliaryRod, targetRod, sourceRod);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the number of disks:");
+        int numOfDisks = scanner.nextInt();
+        
+        solveHanoi(numOfDisks, 'A', 'C', 'B');
+    }
+}
